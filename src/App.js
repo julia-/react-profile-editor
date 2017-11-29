@@ -6,6 +6,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1>LinkedIn Profile Editor</h1>
+        <img src="https://randomuser.me/api/portraits/lego/3.jpg"/>
+        <p>Name: Sam Smith</p>
       </div>
     );
   }
