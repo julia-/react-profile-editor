@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Name, ProfileImage } from './components/ShowProfile'
+import InputText from './components/EditProfile'
 
 class App extends Component {
   state = {
@@ -61,12 +62,12 @@ class App extends Component {
         <Name>Name: {user.firstName} {user.lastName}</Name>
         <div className='edit-profile'>
           <div className='form-group'>
-            <label htmlFor=''>
+            <label>
               First name:
               {' '}
-              <input
-                value={ user.firstName }
-                onChange={
+              <InputText
+                inputValue={ user.firstName }
+                eventListener={
                   // When user types in text field
                   // This funtion is called
                   // The event provides information about what happened
@@ -75,31 +76,30 @@ class App extends Component {
               />
             </label>
           </div>
-          <div className="form-group">
-            <label htmlFor=''>
+          <div className='form-group'>
+            <label>
               Last name:
               {' '}
-              <input
-                value={ user.lastName }
-                onChange={
+              <InputText
+                inputValue={ user.lastName }
+                eventListener={
                   this.onChangeLastName
                 }
               />
             </label>
           </div>
-          <div className="form-group">
-            <label htmlFor="">
+          <div className='form-group'>
+            <label>
               Profile image:
               {' '}
-              <input
-                value={ user.profileImageURL }
-                onChange={
+              <InputText
+                inputValue={ user.profileImageURL }
+                eventListener={
                   this.onChangeProfileImage
                 }
               />
             </label>
           </div>
-
         </div>
       </div>
     );
