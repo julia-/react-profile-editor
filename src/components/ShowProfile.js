@@ -8,4 +8,10 @@ const Name = ({
   </p>
 )
 
-export { Name }
+const ProfileImage = ({
+  imageURL
+}) => (
+  <img src={imageURL}/>
+)
+
+export { Name, ProfileImage }

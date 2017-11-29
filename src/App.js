@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Name } from './components/ShowProfile'
+import { Name, ProfileImage } from './components/ShowProfile'
 
 class App extends Component {
   state = {
@@ -57,7 +57,7 @@ class App extends Component {
     return (
       <div className='App'>
         <h1>LinkedIn Profile Editor</h1>
-        <img src={user.profileImageURL}/>
+        <ProfileImage imageURL={user.profileImageURL}/>
         <Name>Name: {user.firstName} {user.lastName}</Name>
         <div className='edit-profile'>
           <div className='form-group'>
