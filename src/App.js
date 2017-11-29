@@ -1,23 +1,106 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Name } from './components/ShowProfile'
 
 class App extends Component {
   state = {
     user: {
-      firstName: 'Sam',
-      lastName: 'Smith',
-      profileImageURL: 'https://randomuser.me/api/portraits/lego/3.jpg'
+      firstName: 'Jason',
+      lastName: 'Mantzoukas',
+      profileImageURL: 'http://media.hollywood.com/images/650x1000/7577546.jpg'
     }
+  }
+
+  onChangeFirstName = (event) =>{
+    // Get the <input> (and HTMLInputElement)
+    const input = event.target
+    // Get the current inputted text from the field
+    const newFirstName = input.value
+    this.setState((prevState) => {
+      // Make changes to the state
+      const user = prevState.user
+      user.firstName = newFirstName
+      return {
+        // this.state.user will be updated
+        user: user
+      }
+    })
+  }
+
+  onChangeLastName = (event) => {
+    const input = event.target
+    const newLastName = input.value
+    this.setState((prevState) => {
+      const user = prevState.user
+      user.lastName = newLastName
+      return {
+        user: user
+      }
+    })
+  }
+
+  onChangeProfileImage = (event) => {
+    const input = event.target
+    const newProfileImageURL = input.value
+    this.setState((prevState) => {
+      const user = prevState.user
+      user.profileImageURL = newProfileImageURL
+      return {
+        user: user
+      }
+    })
   }
 
   render() {
     const user = this.state.user
 
     return (
-      <div className="App">
+      <div className='App'>
         <h1>LinkedIn Profile Editor</h1>
         <img src={user.profileImageURL}/>
-        <p>Name: {user.firstName} {user.lastName}</p>
+        <Name>Name: {user.firstName} {user.lastName}</Name>
+        <div className='edit-profile'>
+          <div className='form-group'>
+            <label htmlFor=''>
+              First name:
+              {' '}
+              <input
+                value={ user.firstName }
+                onChange={
+                  // When user types in text field
+                  // This funtion is called
+                  // The event provides information about what happened
+                  this.onChangeFirstName
+                  }
+              />
+            </label>
+          </div>
+          <div className="form-group">
+            <label htmlFor=''>
+              Last name:
+              {' '}
+              <input
+                value={ user.lastName }
+                onChange={
+                  this.onChangeLastName
+                }
+              />
+            </label>
+          </div>
+          <div className="form-group">
+            <label htmlFor="">
+              Profile image:
+              {' '}
+              <input
+                value={ user.profileImageURL }
+                onChange={
+                  this.onChangeProfileImage
+                }
+              />
+            </label>
+          </div>
+
+        </div>
       </div>
     );
   }
